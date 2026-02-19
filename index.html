@@ -1,0 +1,258 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>The Nerve — Edge Score Visual Prototypes</title>
+  <style>
+    @import url('https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@300;400;500&display=swap');
+    
+    * { margin: 0; padding: 0; box-sizing: border-box; }
+    
+    html, body {
+      width: 100%; min-height: 100vh;
+      background: #060810;
+      color: #c0c8d8;
+      font-family: 'JetBrains Mono', 'Courier New', monospace;
+    }
+    
+    .container {
+      max-width: 1100px;
+      margin: 0 auto;
+      padding: 80px 40px;
+    }
+    
+    .header {
+      margin-bottom: 80px;
+    }
+    
+    .header h1 {
+      font-size: 14px;
+      font-weight: 300;
+      letter-spacing: 8px;
+      text-transform: uppercase;
+      color: rgba(255,255,255,0.3);
+      margin-bottom: 20px;
+    }
+    
+    .header h2 {
+      font-size: 42px;
+      font-weight: 300;
+      color: rgba(255,255,255,0.85);
+      line-height: 1.2;
+      margin-bottom: 24px;
+    }
+    
+    .header p {
+      font-size: 14px;
+      font-weight: 300;
+      line-height: 1.8;
+      color: rgba(255,255,255,0.35);
+      max-width: 600px;
+    }
+    
+    .concepts {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 30px;
+    }
+    
+    .concept {
+      position: relative;
+      border: 1px solid rgba(255,255,255,0.06);
+      border-radius: 4px;
+      padding: 40px;
+      background: rgba(255,255,255,0.015);
+      transition: all 0.5s ease;
+      cursor: pointer;
+      text-decoration: none;
+      color: inherit;
+      display: block;
+      overflow: hidden;
+    }
+    
+    .concept::before {
+      content: '';
+      position: absolute;
+      top: 0; left: 0; right: 0;
+      height: 2px;
+      background: linear-gradient(90deg, transparent, var(--accent), transparent);
+      opacity: 0;
+      transition: opacity 0.5s;
+    }
+    
+    .concept:hover {
+      border-color: rgba(255,255,255,0.12);
+      background: rgba(255,255,255,0.03);
+      transform: translateY(-2px);
+    }
+    
+    .concept:hover::before {
+      opacity: 1;
+    }
+    
+    .concept-number {
+      font-size: 11px;
+      letter-spacing: 4px;
+      color: var(--accent);
+      opacity: 0.5;
+      margin-bottom: 16px;
+    }
+    
+    .concept-title {
+      font-size: 24px;
+      font-weight: 400;
+      color: rgba(255,255,255,0.8);
+      margin-bottom: 12px;
+    }
+    
+    .concept-subtitle {
+      font-size: 11px;
+      letter-spacing: 2px;
+      text-transform: uppercase;
+      color: var(--accent);
+      opacity: 0.4;
+      margin-bottom: 20px;
+    }
+    
+    .concept-desc {
+      font-size: 13px;
+      font-weight: 300;
+      line-height: 1.7;
+      color: rgba(255,255,255,0.3);
+    }
+    
+    .concept-enter {
+      margin-top: 24px;
+      font-size: 10px;
+      letter-spacing: 3px;
+      text-transform: uppercase;
+      color: var(--accent);
+      opacity: 0.3;
+      transition: opacity 0.3s;
+    }
+    
+    .concept:hover .concept-enter {
+      opacity: 0.7;
+    }
+    
+    .concept:nth-child(1) { --accent: #4090d0; }
+    .concept:nth-child(2) { --accent: #d04040; }
+    .concept:nth-child(3) { --accent: #3080a0; }
+    .concept:nth-child(4) { --accent: #c07030; }
+    
+    .footer {
+      margin-top: 80px;
+      padding-top: 30px;
+      border-top: 1px solid rgba(255,255,255,0.04);
+    }
+    
+    .footer p {
+      font-size: 11px;
+      color: rgba(255,255,255,0.2);
+      line-height: 1.8;
+    }
+    
+    .footer .controls {
+      margin-top: 12px;
+      font-size: 10px;
+      letter-spacing: 2px;
+      color: rgba(255,255,255,0.15);
+    }
+    
+    .live-dot {
+      display: inline-block;
+      width: 6px; height: 6px;
+      background: #40a060;
+      border-radius: 50%;
+      margin-right: 8px;
+      animation: pulse 2s ease infinite;
+    }
+    
+    @keyframes pulse {
+      0%, 100% { opacity: 0.4; }
+      50% { opacity: 1; }
+    }
+    
+    @media (max-width: 768px) {
+      .concepts { grid-template-columns: 1fr; }
+      .header h2 { font-size: 28px; }
+      .container { padding: 40px 20px; }
+    }
+  </style>
+</head>
+<body>
+  <div class="container">
+    <div class="header">
+      <h1>The Nerve</h1>
+      <h2>Edge Score<br>Visual Prototypes</h2>
+      <p>
+        Four interactive explorations of how systemic risk should look and feel. 
+        Each fetches live data from The Nerve engine. Each is a different answer 
+        to the question: what does the distance to midnight look like?
+      </p>
+    </div>
+    
+    <div class="concepts">
+      <a class="concept" href="midnight-clock/index.html">
+        <div class="concept-number">01</div>
+        <div class="concept-title">The Midnight Clock</div>
+        <div class="concept-subtitle">Doomsday Clock Reimagined</div>
+        <div class="concept-desc">
+          A single trembling hand moves from noon toward midnight. 
+          Domain threads braid into the hand. The visual regime shifts 
+          from serene blues through amber to cracked, molten reds.
+        </div>
+        <div class="concept-enter">Enter sketch →</div>
+      </a>
+      
+      <a class="concept" href="pulse/index.html">
+        <div class="concept-number">02</div>
+        <div class="concept-title">The Pulse</div>
+        <div class="concept-subtitle">Heartbeat of Global Risk</div>
+        <div class="concept-desc">
+          The Edge Score as a living heartbeat. Calm periods breathe slowly. 
+          Stress periods spike and race. Domain-colored threads split 
+          and converge like a seismograph of systemic fragility.
+        </div>
+        <div class="concept-enter">Enter sketch →</div>
+      </a>
+      
+      <a class="concept" href="depth/index.html">
+        <div class="concept-number">03</div>
+        <div class="concept-title">The Depth</div>
+        <div class="concept-subtitle">Descent into Turbulence</div>
+        <div class="concept-desc">
+          Risk as ocean depth. Low scores float at a calm surface with 
+          caustic light. As risk rises, descend into darker, more turbulent 
+          waters. Flow fields and bioluminescent particles map domain interactions.
+        </div>
+        <div class="concept-enter">Enter sketch →</div>
+      </a>
+      
+      <a class="concept" href="fracture/index.html">
+        <div class="concept-number">04</div>
+        <div class="concept-title">The Fracture</div>
+        <div class="concept-subtitle">A World Coming Apart</div>
+        <div class="concept-desc">
+          A luminous sphere — the interconnected world — whole and serene at 
+          low risk. As the Edge Score rises, fracture lines appear, domain-colored 
+          light bleeds through cracks, and fragments drift apart.
+        </div>
+        <div class="concept-enter">Enter sketch →</div>
+      </a>
+    </div>
+    
+    <div class="footer">
+      <p>
+        <span class="live-dot"></span>
+        All sketches fetch live data from the Nerve Engine API every 60 seconds.
+      </p>
+      <div class="controls">
+        CLICK — cycle through simulated crisis levels &nbsp;·&nbsp; 
+        SPACE — toggle live / simulation mode
+      </div>
+    </div>
+  </div>
+</body>
+</html>

@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>The Nerve — The Fracture</title>
+  <style>
+    * { margin: 0; padding: 0; box-sizing: border-box; }
+    html, body { 
+      width: 100%; height: 100%; overflow: hidden; 
+      background: #050508; 
+      font-family: 'Courier New', monospace;
+    }
+    canvas { display: block; }
+    #info {
+      position: fixed; bottom: 20px; left: 20px;
+      color: rgba(255,255,255,0.3); font-size: 11px;
+      letter-spacing: 2px; text-transform: uppercase;
+      pointer-events: none; z-index: 10;
+    }
+    #sim-badge {
+      position: fixed; top: 20px; right: 20px;
+      color: rgba(255,255,255,0.4); font-size: 10px;
+      letter-spacing: 3px; text-transform: uppercase;
+      pointer-events: none; z-index: 10;
+      opacity: 0; transition: opacity 0.5s;
+    }
+    #sim-badge.active { opacity: 1; }
+  </style>
+</head>
+<body>
+  <div id="info">CLICK to cycle crisis levels · SPACE for live/sim toggle</div>
+  <div id="sim-badge">SIMULATION</div>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/p5.js/1.9.0/p5.min.js"></script>
+  <script src="../shared/nerve-data.js"></script>
+  <script src="sketch.js"></script>
+</body>
+</html>
